@@ -9,49 +9,49 @@ using MindPalace.Server.Entities;
 
 namespace MindPalace.Server.Services
 {
-    public class LinksRepository : ILinksRepository
+    public class TagsRepository : ITagsRepository
     {
         private readonly ApplicationDbContext _context;
         private readonly ILogger<LinksRepository> _logger;
 
-        public LinksRepository(ApplicationDbContext context,
+        public TagsRepository(ApplicationDbContext context,
             ILogger<LinksRepository> logger)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public void AddLink(Link link)
+        public void AddTag(Tag tag)
         {
-            if (link == null)
+            if (tag == null)
             {
-                throw new ArgumentNullException(nameof(link));
+                throw new ArgumentNullException(nameof(tag));
             }
-            _context.Links.Add(link);
+            _context.Tags.Add(tag);
         }
 
-        public async Task<IEnumerable<Link>> GetLinksAsync()
+        public async Task<IEnumerable<Tag>> GetTagsAsync()
         {
-            return await _context.Links.ToListAsync();
+            return await _context.Tags.ToListAsync();
         }
 
-        public async Task<Link> GetLinkAsync(Guid id)
+        public async Task<Tag> GetTagAsync(Guid id)
         {
-            return await _context.Links.FindAsync(id);
+            return await _context.Tags.FindAsync(id);
         }
 
-        public void DeleteLink(Link link)
+        public void DeleteTag(Tag tag)
         {
-            _context.Links.Remove(link);
+            _context.Tags.Remove(tag);
         }
 
-        public void UpdateLink(Link link)
+        public void UpdateTag(Tag tag)
         {
-            _context.Entry(link).State = EntityState.Modified;
+            _context.Entry(tag).State = EntityState.Modified;
         }
 
         public async Task<bool> SaveChangesAsync() => await _context.SaveChangesAsync() > 0;
 
-        public bool LinkExists(Guid id) => _context.Links.Any(l => l.Id == id);
+        public bool TagExists(Guid id) => _context.Tags.Any(t => t.Id == id);
     }
 }

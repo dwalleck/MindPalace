@@ -17,10 +17,10 @@ namespace MindPalace.Server.Controllers
     [ApiController]
     public class LinksController : ControllerBase
     {
-        private readonly LinksRepository _repo;
+        private readonly ILinksRepository _repo;
         private readonly IMapper _mapper;
 
-        public LinksController(LinksRepository repo, IMapper mapper)
+        public LinksController(ILinksRepository repo, IMapper mapper)
         {
             _repo = repo ??
                 throw new ArgumentNullException(nameof(repo));
@@ -60,9 +60,37 @@ namespace MindPalace.Server.Controllers
 
             var linkToReturn = _mapper.Map<LinkDto>(linkEntity);
             return CreatedAtAction(
-                "GetActivity",
+                "GetLink",
                 new { id = linkToReturn.Id },
                 linkToReturn);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateLink(Guid id, LinkToUpdateDto activity)
+        {
+            var linkEntity = await _repo.GetLinkAsync(id);
+            if (linkEntity == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(activity, linkEntity);
+            _repo.UpdateLink(linkEntity);
+            await _repo.SaveChangesAsync();
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<LinkDto>> DeleteLink(Guid id)
+        {
+            var link = await _repo.GetLinkAsync(id);
+            if (link == null)
+            {
+                return NotFound();
+            }
+            _repo.DeleteLink(link);
+            await _repo.SaveChangesAsync();
+            return _mapper.Map<LinkDto>(link);
         }
     }
 }

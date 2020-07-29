@@ -8,6 +8,9 @@ using Microsoft.Extensions.Hosting;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using MindPalace.Server.Contexts;
+using MindPalace.Server.Services;
+using System;
+using AutoMapper;
 
 namespace MindPalace.Server
 {
@@ -26,6 +29,9 @@ namespace MindPalace.Server
         {
             services.AddDbContext<ApplicationDbContext>(opt =>
                opt.UseNpgsql(Configuration.GetConnectionString("MindPalace")));
+            services.AddTransient<ILinksRepository, LinksRepository>();
+            services.AddTransient<ITagsRepository, TagsRepository>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

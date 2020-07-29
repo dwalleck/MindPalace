@@ -13,6 +13,8 @@ namespace MindPalace.Server.Profiles
         public LinksProfile()
         {
             CreateMap<LinkToCreateDto, Link>();
+            CreateMap<LinkToUpdateDto, Link>();
+            CreateMap<Link, LinkDto>();
         }
     }
 }
