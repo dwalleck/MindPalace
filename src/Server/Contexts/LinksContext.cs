@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Server.Entities;
+using MindPalace.Server.Entities;
 
 namespace MindPalace.Server.Contexts
 {
