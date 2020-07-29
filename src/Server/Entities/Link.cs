@@ -1,8 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using MindPalace.Server.Entities;
 
-namespace Server.Entities
+namespace MindPalace.Server.Entities
 {
     public class Link
     {

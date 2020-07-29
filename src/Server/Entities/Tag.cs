@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
-namespace Server.Entities
+namespace MindPalace.Server.Entities
 {
     public class Tag
     {

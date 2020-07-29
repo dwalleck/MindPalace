@@ -1,6 +1,6 @@
 using System;
 
-namespace Server.Entities
+namespace MindPalace.Server.Entities
 {
     public class LinkTag
     {

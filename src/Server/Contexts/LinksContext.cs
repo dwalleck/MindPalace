@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Server.Entities;
 
-namespace Server.Contexts
+namespace MindPalace.Server.Contexts
 {
     public class ApplicationDbContext : DbContext
     {
