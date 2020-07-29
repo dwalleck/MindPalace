@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Server.Contexts;
+using MindPalace.Server.Contexts;
 
 namespace MindPalace.Server
 {
@@ -24,7 +24,6 @@ namespace MindPalace.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddDbContext<ApplicationDbContext>(opt =>
                opt.UseNpgsql(Configuration.GetConnectionString("MindPalace")));
             services.AddControllersWithViews();
