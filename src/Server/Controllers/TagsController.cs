@@ -24,8 +24,8 @@ namespace MindPalace.Server.Controllers
         {
             _repo = repo ??
                 throw new ArgumentNullException(nameof(repo));
-             _mapper = mapper ??
-                throw new ArgumentNullException(nameof(mapper));
+            _mapper = mapper ??
+               throw new ArgumentNullException(nameof(mapper));
         }
 
         [HttpGet]
@@ -64,6 +64,5 @@ namespace MindPalace.Server.Controllers
                 new { id = linkToReturn.Id },
                 linkToReturn);
         }
-
-        
+    }
 }

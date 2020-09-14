@@ -12,21 +12,5 @@ namespace MindPalace.Server.Contexts
             : base(options)
         {
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<LinkTag>()
-                .HasKey(t => new { t.LinkId, t.TagId});
-
-            modelBuilder.Entity<LinkTag>()
-                .HasOne(lt => lt.Link)
-                .WithMany(l => l.LinkTags)
-                .HasForeignKey(lt => lt.LinkId);
-
-            modelBuilder.Entity<LinkTag>()
-                .HasOne(lt => lt.Tag)
-                .WithMany(t => t.LinkTags)
-                .HasForeignKey(lt => lt.TagId);
-        }
     }
 }

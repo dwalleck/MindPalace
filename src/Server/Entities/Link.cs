@@ -17,6 +17,6 @@ namespace MindPalace.Server.Entities
         [MaxLength(500)]
         public string Url { get; set; }
 
-        public List<LinkTag> LinkTags { get; set; } = new List<LinkTag>();
+        public List<Tag> Tags { get; set; }
     }
 }
