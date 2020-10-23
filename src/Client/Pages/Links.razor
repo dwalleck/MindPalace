@@ -1,0 +1,23 @@
+@page "/links"
+
+<h3>Links</h3>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var link in StoredLinks)
+        {
+            <tr>
+                <td>@link.Name</td>
+                <td>
+                </td> 
+            </tr>
+        }
+    </tbody>
+</table>
+
